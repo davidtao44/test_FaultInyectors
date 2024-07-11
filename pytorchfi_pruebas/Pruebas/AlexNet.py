@@ -90,7 +90,7 @@ print("[Single Error] PytorchFI label:", inj_label)
 #Ejemplo de uso de una de las funciones del script neuron_error_models
 #Se importa la funcion a utilizar
 
-from pytorchfi.neuron_error_models import random_neuron_inj_batched  #single random neuron error in each batch element.
+from pytorchfi.neuron_error_models import random_neuron_inj  #single random neuron error in each batch element.
 
 pfi_model_3 = custom_func(model, 
                      batch_size,
@@ -99,7 +99,7 @@ pfi_model_3 = custom_func(model,
                      use_cuda=False,
                      )
 
-inj = random_neuron_inj_batched(pfi_model_3)
+inj = random_neuron_inj(pfi_model_3)
 inj_output = inj(image)
 inj_label = list(torch.argmax(inj_output, dim=1))[0].item()
 print("[Single Error] PytorchFI label:", inj_label)
