@@ -92,14 +92,14 @@ print("[Single Error] PytorchFI label:", inj_label)
 
 from pytorchfi.neuron_error_models import random_neuron_inj  #single random neuron error in each batch element.
 
-pfi_model_3 = custom_func(model, 
+pfi_model_4 = custom_func(model, 
                      batch_size,
                      input_shape=[c,h,w],
                      layer_types=[torch.nn.Conv2d],
                      use_cuda=False,
                      )
 
-inj = random_neuron_inj(pfi_model_3)
+inj = random_neuron_inj(pfi_model_4)
 inj_output = inj(image)
 inj_label = list(torch.argmax(inj_output, dim=1))[0].item()
 print("[Single Error] PytorchFI label:", inj_label)
